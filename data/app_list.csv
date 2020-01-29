@@ -1,0 +1,3 @@
+app_name,app_location,log_location,log_filename,message,app_servicename
+PostgreSQL,C:\Program Files\PostgreSQL,C:\Program Files\PostgreSQL\11\data\log,postgresql-2019-08-28_152651.log,database system is ready to accept connections,PostgreSQL
+Jenkins,C:\Program Files (x86)\Jenkins,C:\Program Files (x86)\Jenkins\logs\slaves\windows,slave.log,Inbound agent connected,Jenkins
