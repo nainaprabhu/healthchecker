@@ -14,7 +14,7 @@ pipeline {
            sh 'git config --global user.name "Naina"'
            sh 'git add --all'
            sh 'git commit -m "Merged develop branch to master"'
-           sh "git push origin master"
+           sh "git push -u origin master"
         }
       }
     }
