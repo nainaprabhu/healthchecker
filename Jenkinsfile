@@ -10,6 +10,8 @@ pipeline {
       steps {
         script {
            sh "touch test.txt"
+           sh "git status"
+           sh "git branch"
            sh 'git config --global user.email "naina.v.prabhu@gmail.com"'
            sh 'git config --global user.name "Naina"'
            sh 'git add --all'
