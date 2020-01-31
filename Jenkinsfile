@@ -31,8 +31,10 @@ pipeline {
            sh 'git config --global user.name "Naina"'
            sh 'git add --all'
            sh 'git commit -m "Merged to master"'
+        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'MyGitHubID', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
            sh "git push origin HEAD:master"
-        }
+}
+         }
         }
       }
     }
