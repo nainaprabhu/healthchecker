@@ -24,14 +24,14 @@ pipeline {
   
   dir("healthchecker") { 
         
-           sh "echo 'this is a test' > test.txt"
+           sh "echo 'this is a test' > test_${BUILD_NUMBER}.txt"
            sh "git status"
            sh "git branch"
            sh 'git config --global user.email "naina.v.prabhu@gmail.com"'
            sh 'git config --global user.name "Naina"'
            sh 'git add --all'
            sh 'git commit -m "Merged to master"'
-           sh "git push"
+           sh "git push origin HEAD:master"
         }
         }
       }
