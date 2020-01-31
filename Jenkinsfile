@@ -9,13 +9,16 @@ pipeline {
 
   stages {
     stage('Git Push!') {
+      script {
+         def node = jenkins.model.Jenkins.instance.getNode( "master" )
+          println node.computer.getChannel().call(new ListPossibleNames())
+        println "************************************************************"
+      }
       steps {
         sh 'git config --global credential.helper cache'
         sh 'git config --global push.default simple'
 
-        def node = jenkins.model.Jenkins.instance.getNode( "master" )
-println node.computer.getChannel().call(new ListPossibleNames())
-        println "************************************************************"
+       
   checkout([
     $class: 'GitSCM',
     branches: [[name: "master"]],
