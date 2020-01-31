@@ -22,7 +22,7 @@ pipeline {
     ]
   ])
   
-  dir("healthchecker") {         
+  //dir("healthchecker") {         
            sh "echo 'this is a test' > test_${BUILD_NUMBER}.txt"
            sh "pwd"
            sh "ls"
@@ -35,7 +35,7 @@ pipeline {
            //sh "git push origin HEAD:master"
           sh " git push https://${GIT_USERNAME}:Pulsar%405686@github.com/nainaprabhu/healthchecker.git HEAD:master"
 }
-         }
+        // }
         }
       }
     }
