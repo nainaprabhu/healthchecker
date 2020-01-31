@@ -22,11 +22,10 @@ pipeline {
     ]
   ])
   
-  dir("healthchecker") { 
-        
+  dir("healthchecker") {         
            sh "echo 'this is a test' > test_${BUILD_NUMBER}.txt"
+           sh "ls"
            sh "git status"
-           sh "git branch"
            sh 'git config --global user.email "naina.v.prabhu@gmail.com"'
            sh 'git config --global user.name "Naina"'
            sh 'git add --all'
