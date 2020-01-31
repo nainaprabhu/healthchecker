@@ -13,7 +13,7 @@ pipeline {
 
 checkout([
     $class: 'GitSCM',
-    branches: [[name: master]],
+    branches: [[name: "master"]],
     extensions: [
         [$class: 'CloneOption', noTags: true, reference: '', shallow: true]
     ],
