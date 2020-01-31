@@ -8,7 +8,21 @@ pipeline {
   stages {
     stage('Git Push!') {
       steps {
-        script {
+        sh 'git config --global credential.helper cache'
+        sh 'git config --global push.default simple'
+
+checkout([
+    $class: 'GitSCM',
+    branches: [[name: "master"]],
+    extensions: [
+        [$class: 'CloneOption', noTags: true, reference: '', shallow: true]
+    ],
+    submoduleCfg: [],
+    userRemoteConfigs: [[ credentialsId: '', url: "https://github.com/nainaprabhu/healthchecker.git"]
+    ]
+])
+        dir("healthchecker") { 
+        
            sh "touch test.txt"
            sh "git status"
            sh "git branch"
@@ -18,7 +32,8 @@ pipeline {
            sh 'git commit -m "Merged develop branch to master"'
            sh "git push -u origin master"
         }
+        }
       }
     }
   }
-}
+
