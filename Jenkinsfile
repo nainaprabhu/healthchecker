@@ -24,6 +24,7 @@ pipeline {
   
   dir("healthchecker") {         
            sh "echo 'this is a test' > test_${BUILD_NUMBER}.txt"
+           sh "pwd"
            sh "ls"
            sh "git status"
            sh 'git config --global user.email "naina.v.prabhu@gmail.com"'
@@ -32,7 +33,7 @@ pipeline {
            sh 'git commit -m "Merged to master"'
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'MyGitHubID', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
            //sh "git push origin HEAD:master"
-          sh " git push https://${GIT_USERNAME}:Pulsar%405686@github.com/nainaprabhu/healthchecker.git --all"
+          sh " git push https://${GIT_USERNAME}:Pulsar%405686@github.com/nainaprabhu/healthchecker.git master"
 }
          }
         }
