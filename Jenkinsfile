@@ -1,3 +1,5 @@
+import hudson.model.Computer.ListPossibleNames
+
 pipeline {
   agent any
   environment {
@@ -10,7 +12,9 @@ pipeline {
       steps {
         sh 'git config --global credential.helper cache'
         sh 'git config --global push.default simple'
-println InetAddress.localHost.hostAddress
+
+        def node = jenkins.model.Jenkins.instance.getNode( "master" )
+println node.computer.getChannel().call(new ListPossibleNames())
         println "************************************************************"
   checkout([
     $class: 'GitSCM',
