@@ -10,7 +10,8 @@ pipeline {
       steps {
         sh 'git config --global credential.helper cache'
         sh 'git config --global push.default simple'
-
+println InetAddress.localHost.hostAddress
+        println "************************************************************"
   checkout([
     $class: 'GitSCM',
     branches: [[name: "master"]],
