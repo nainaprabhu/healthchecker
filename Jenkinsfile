@@ -11,7 +11,7 @@ pipeline {
         sh 'git config --global credential.helper cache'
         sh 'git config --global push.default simple'
 
-checkout([
+  checkout([
     $class: 'GitSCM',
     branches: [[name: "master"]],
     extensions: [
@@ -20,17 +20,18 @@ checkout([
     submoduleCfg: [],
     userRemoteConfigs: [[ credentialsId: '', url: "https://github.com/nainaprabhu/healthchecker.git"]
     ]
-])
-        dir("healthchecker") { 
+  ])
+  
+  dir("healthchecker") { 
         
-           sh "touch test.txt"
+           sh "echo 'this is a test' > test.txt"
            sh "git status"
            sh "git branch"
            sh 'git config --global user.email "naina.v.prabhu@gmail.com"'
            sh 'git config --global user.name "Naina"'
            sh 'git add --all'
-           sh 'git commit -m "Merged develop branch to master"'
-           sh "git push -u origin master"
+           sh 'git commit -m "Merged to master"'
+           sh "git push"
         }
         }
       }
